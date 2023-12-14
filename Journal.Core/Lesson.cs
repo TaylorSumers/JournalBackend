@@ -20,4 +20,6 @@ public partial class Lesson
     public virtual ICollection<StudentLesson> StudentLessons { get; set; } = new List<StudentLesson>();
 
     public virtual Teacher Teacher { get; set; } = null!;
+
+    public virtual Subject Subject { get; set; } = null!;
 }

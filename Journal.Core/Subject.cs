@@ -14,4 +14,6 @@ public partial class Subject
     public virtual Speciality Speciality { get; set; } = null!;
 
     public virtual ICollection<TeacherSubject> TeacherSubjects { get; set; } = new List<TeacherSubject>();
+
+    public virtual ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();
 }

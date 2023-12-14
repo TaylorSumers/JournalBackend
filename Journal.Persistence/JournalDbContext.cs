@@ -34,7 +34,7 @@ public partial class JournalDbContext : DbContext, IJournalDbContext
 
     public virtual DbSet<TeacherSubject> TeacherSubjects { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // TODO: Maybe delete
         => optionsBuilder.UseSqlServer("Server=MsiModern14;Database=UetkJournal;Trusted_Connection=True;TrustServerCertificate=true;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) // TODO: Move to EntityTypeConfigurations 3
@@ -63,6 +63,11 @@ public partial class JournalDbContext : DbContext, IJournalDbContext
                 .HasForeignKey(d => d.TeacherId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Lesson_Teacher");
+
+            entity.HasOne(d => d.Subject).WithMany(p => p.Lessons)
+                .HasForeignKey(d => d.SubjectId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Lesson_Subject");
         });
 
         modelBuilder.Entity<Mark>(entity =>
