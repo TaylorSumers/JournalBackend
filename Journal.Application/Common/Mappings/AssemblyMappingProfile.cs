@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Journal.Application.Common.Mappings
 {
-    public class AssemblyMappingProfile
+    public class AssemblyMappingProfile :  Profile
     {
-        public AssemblyMappingProfile(Assembly assembly) => ApplyMappingsFromAssembl(assembly);
+        public AssemblyMappingProfile(Assembly assembly) => ApplyMappingsFromAssembly(assembly);
 
-        private void ApplyMappingsFromAssembl(Assembly assembly)
+        private void ApplyMappingsFromAssembly(Assembly assembly)
         {
             var types = assembly.GetExportedTypes()
                 .Where(type => type.GetInterfaces()
