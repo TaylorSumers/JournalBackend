@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Journal.Core\Journal.Core.csproj" />
+    <ProjectReference Include="..\Journal.Core\Journal.Domain.csproj" />
   </ItemGroup>
 
 </Project>

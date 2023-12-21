@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Journal.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Journal.Core;
+namespace Journal.Domain;
 
 public partial class JournalDbContext : DbContext, IJournalDbContext
 {
@@ -32,7 +32,7 @@ public partial class JournalDbContext : DbContext, IJournalDbContext
 
     public virtual DbSet<Teacher> Teachers { get; set; }
 
-    public virtual DbSet<TeacherSubject> TeacherSubjects { get; set; }
+    public virtual DbSet<TeacherGroup> TeacherGroups { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // TODO: Maybe delete
         => optionsBuilder.UseSqlServer("Server=MsiModern14;Database=UetkJournal;Trusted_Connection=True;TrustServerCertificate=true;");
@@ -46,8 +46,8 @@ public partial class JournalDbContext : DbContext, IJournalDbContext
             entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Name).HasMaxLength(10);
 
-            entity.HasOne(d => d.SpecialityNavigation).WithMany(p => p.Groups)
-                .HasForeignKey(d => d.Speciality)
+            entity.HasOne(d => d.Speciality).WithMany(p => p.Groups)
+                .HasForeignKey(d => d.SpecialityId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Group_Speciality");
         });
@@ -150,19 +150,23 @@ public partial class JournalDbContext : DbContext, IJournalDbContext
             entity.Property(e => e.Surname).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<TeacherSubject>(entity =>
+        modelBuilder.Entity<TeacherGroup>(entity =>
         {
-            entity.ToTable("TeacherSubject");
+            entity.ToTable("TeacherGroup");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
 
-            entity.HasOne(d => d.Subject).WithMany(p => p.TeacherSubjects)
+            entity.HasOne(d => d.Subject).WithMany(p => p.TeacherGroups)
                 .HasForeignKey(d => d.SubjectId)
-                .HasConstraintName("FK_TeacherSubject_Subject");
+                .HasConstraintName("FK_TeacherGroup_Subject");
 
-            entity.HasOne(d => d.Teacher).WithMany(p => p.TeacherSubjects)
+            entity.HasOne(d => d.Teacher).WithMany(p => p.TeacherGroups)
                 .HasForeignKey(d => d.TeacherId)
-                .HasConstraintName("FK_TeacherSubject_Teacher");
+                .HasConstraintName("FK_TeacherGroup_Teacher");
+
+            entity.HasOne(d => d.Group).WithMany(p => p.TeacherGroups)
+                .HasForeignKey(d => d.GroupId)
+                .HasConstraintName("FK_TeacherGroup_Group");
         });
 
         OnModelCreatingPartial(modelBuilder);

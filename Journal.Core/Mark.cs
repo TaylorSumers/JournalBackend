@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Journal.Core;
+namespace Journal.Domain;
 
 public partial class Mark
 {

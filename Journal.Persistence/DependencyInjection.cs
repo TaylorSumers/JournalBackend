@@ -1,5 +1,5 @@
 ﻿using Journal.Application.Interfaces;
-using Journal.Core;
+using Journal.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

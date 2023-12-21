@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Journal.Core;
+namespace Journal.Domain;
 
 public partial class Subject
 {
@@ -13,7 +13,7 @@ public partial class Subject
 
     public virtual Speciality Speciality { get; set; } = null!;
 
-    public virtual ICollection<TeacherSubject> TeacherSubjects { get; set; } = new List<TeacherSubject>();
+    public virtual ICollection<TeacherGroup> TeacherGroups { get; set; } = new List<TeacherGroup>();
 
     public virtual ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();
 }

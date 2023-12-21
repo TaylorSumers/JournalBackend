@@ -1,6 +1,6 @@
 ﻿using Journal.Application.Common.Exceptions;
 using Journal.Application.Interfaces;
-using Journal.Core;
+using Journal.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;

@@ -1,7 +1,7 @@
 
 using Journal.Application.Common.Mappings;
 using Journal.Application.Interfaces;
-using Journal.Core;
+using Journal.Domain;
 using System.Reflection;
 using Journal.Application;
 using Journal.Persistence;

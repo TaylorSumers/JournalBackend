@@ -1,4 +1,4 @@
-﻿using Journal.Core;
+﻿using Journal.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,7 @@ namespace Journal.Application.Interfaces
 
         DbSet<Teacher> Teachers { get; set; }
 
-        DbSet<TeacherSubject> TeacherSubjects { get; set; }
+        DbSet<TeacherGroup> TeacherGroups { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

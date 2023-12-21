@@ -9,13 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{40CE499C-2C8C-47C5-932C-CE3EDAE4A966}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Journal.Core", "Journal.Core\Journal.Core.csproj", "{3BCDCE5D-6C2C-4B36-BAA4-2C48C49DE7E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Journal.Domain", "Journal.Core\Journal.Domain.csproj", "{3BCDCE5D-6C2C-4B36-BAA4-2C48C49DE7E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Journal.Application", "Journal.Application\Journal.Application.csproj", "{CEC3DCE6-0322-45AA-8166-D5481C4D67FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Journal.Application", "Journal.Application\Journal.Application.csproj", "{CEC3DCE6-0322-45AA-8166-D5481C4D67FC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2A799B65-E8B5-4694-9E71-5575C6951EF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Journal.Persistence", "Journal.Persistence\Journal.Persistence.csproj", "{6B246B1B-B2AC-49F0-993B-876E0F7244AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Journal.Persistence", "Journal.Persistence\Journal.Persistence.csproj", "{6B246B1B-B2AC-49F0-993B-876E0F7244AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
