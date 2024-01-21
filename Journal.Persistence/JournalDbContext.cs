@@ -34,8 +34,7 @@ public partial class JournalDbContext : DbContext, IJournalDbContext
 
     public virtual DbSet<TeacherGroup> TeacherGroups { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // TODO: Maybe delete
-        => optionsBuilder.UseSqlServer("Server=MsiModern14;Database=UetkJournal;Trusted_Connection=True;TrustServerCertificate=true;");
+    public DbSet<TeacherSubject> TeacherSubjects { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) // TODO: Move to EntityTypeConfigurations 3
     {
@@ -148,6 +147,7 @@ public partial class JournalDbContext : DbContext, IJournalDbContext
             entity.Property(e => e.Patronymic).HasMaxLength(50);
             entity.Property(e => e.Phone).HasMaxLength(20);
             entity.Property(e => e.Surname).HasMaxLength(50);
+            entity.Property(e => e.Photo).HasColumnType("image");
         });
 
         modelBuilder.Entity<TeacherGroup>(entity =>
@@ -167,6 +167,21 @@ public partial class JournalDbContext : DbContext, IJournalDbContext
             entity.HasOne(d => d.Group).WithMany(p => p.TeacherGroups)
                 .HasForeignKey(d => d.GroupId)
                 .HasConstraintName("FK_TeacherGroup_Group");
+        });
+
+        modelBuilder.Entity<TeacherSubject>(entity =>
+        {
+            entity.ToTable("TeacherSubject");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+
+            entity.HasOne(d => d.Teacher).WithMany(p => p.TeacherSubjects)
+                .HasForeignKey(d => d.TeacherId)
+                .HasConstraintName("FK_TeacherSubject_Teacher");
+
+            entity.HasOne(d => d.Subject).WithMany(p => p.TeacherSubjects)
+                .HasForeignKey(d => d.SubjectId)
+                .HasConstraintName("FK_TeacherSubject_Subject");
         });
 
         OnModelCreatingPartial(modelBuilder);

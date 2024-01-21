@@ -28,6 +28,8 @@ namespace Journal.Application.Interfaces
 
         DbSet<TeacherGroup> TeacherGroups { get; set; }
 
+        DbSet<TeacherSubject> TeacherSubjects { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

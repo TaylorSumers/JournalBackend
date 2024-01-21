@@ -27,7 +27,7 @@ namespace Journal.Application.StudentLessons.Queries.GetStudentLessonList
             var studentLessons = await _dbContext.StudentLessons
                 .Where(studentLessons => studentLessons.Lesson.TeacherId == request.TeacherId &&
                 studentLessons.Lesson.SubjectId == request.SubjectId &&
-                studentLessons.Lesson.Date >= DateTime.Today.AddDays(-30))
+                studentLessons.Lesson.Date >= DateTime.Today.AddDays(-60))
                 .ProjectTo<StudentLessonDto>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 

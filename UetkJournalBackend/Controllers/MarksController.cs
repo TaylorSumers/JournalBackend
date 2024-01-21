@@ -6,7 +6,7 @@ namespace UetkJournal.WebApi.Controllers
     public class MarksController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult<MarkListVm>> Get()
+        public async Task<ActionResult<MarkListVm>> GetAll()
         {
             var query = new GetMarksQuery();
             var vm = await Mediator.Send(query);

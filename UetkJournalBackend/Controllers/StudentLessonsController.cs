@@ -8,7 +8,7 @@ namespace UetkJournal.WebApi.Controllers
     public class StudentLessonsController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult<StudentLessonListVm>> GetStudentLessonList(Guid teacherId, Guid subjectId, Guid groupId)
+        public async Task<ActionResult<StudentLessonListVm>> GetAll(Guid teacherId, Guid subjectId, Guid groupId)
         {
             var query = new GetStudentLessonsQuery
             {
@@ -21,7 +21,7 @@ namespace UetkJournal.WebApi.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> SetMarkToStudent(Guid studentLessonId, Guid markId)
+        public async Task<ActionResult> SetMark(Guid studentLessonId, Guid markId)
         {
             var command = new SetMarkCommand
             {

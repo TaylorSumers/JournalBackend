@@ -18,7 +18,9 @@ namespace Journal.Persistence
             var connectionString = configuration["ConnectionString"];
             services.AddDbContext<JournalDbContext>(options =>
             {
-                options.UseSqlServer(connectionString);
+                options
+                    .UseLazyLoadingProxies()
+                    .UseSqlServer(connectionString);
             });
             services.AddScoped<IJournalDbContext>(provider =>
                 provider.GetService<JournalDbContext>());
